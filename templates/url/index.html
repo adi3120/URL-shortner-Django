@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL shortner</title>
+    <style>
+        body {
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        input[type="text"] {
+            width: 1000px;
+        }
+        
+        h1 {
+            display: block;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+        }
+        
+        .main span {
+            display: block;
+            padding-top: 20px;
+        }
+        
+        p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>URL Shortner</h1>
+
+    <div class="main">
+        <div class="form">
+            <form method="post">
+                {% csrf_token %} {{form.as_p}}
+                <!-- <input type="text" name="url" class="custom"><br/><br/> -->
+                <input type="submit" value="Shorten this URL" />
+            </form>
+        </div>
+
+        {% if short %}
+        <span class="custom">
+	Shortened URL: <strong><a href="http://localhost:8000/url/{{short}}">http://localhost:8000/url/{{short}}</a></strong> 
+</span> {% endif %}
+    </div>
+</body>
+
+</html>
